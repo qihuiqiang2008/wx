@@ -42,6 +42,7 @@ var es=function(){
 app.use('/wechat',wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
+  var rr=res;
   console.log(message)
   client.search({
   index: 'schools',
@@ -55,13 +56,13 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   }
 }).then(function (resp) {
   var hits = resp.body.hits;
-  res.reply('hehe');
+  rr.reply('hehe');
   console.log(hits)
   
 });
 
-  res.reply('hehe');
-
+/*  res.reply('hehe');
+*/
 
 /*res.reply({
       content: '那个对美院刘畅有意思的妹子，这是他的联系方式，不用谢我，叫我雷锋阿姨。刘畅：132-6176-5153"\n\n回复上上期表白5，我是她朋友，她有一个特别特别喜欢的人了，她希望你可以找到更好的女孩:\n\n致偷暖瓶的：放于四食堂东门前的绿色暖瓶和紫色暖瓶被偷，已调取监控视频，限两日内放回原位，否则被抓的时候再见吧～:))',
