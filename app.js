@@ -33,6 +33,7 @@ var config = {
 
 app.use('/wechat',wechat(config, function (req, res, next) {
 
+var re1s=res;
 async.waterfall([
   function(callback){
     callback(null, 'one', 'two');
@@ -57,7 +58,8 @@ client.search({
 }).then(function (resp) {
   var hits = resp.body.hits;
   console.log(hits)
- 
+  re1s.reply('我今年18岁');
+
   
 }, function (err) {
  callback(null, 'done');});
@@ -66,7 +68,6 @@ client.search({
   }
 ], function (err, result) {
    // result now equals 'done'
- res.reply('我今年18岁');
 });
 
 
