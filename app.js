@@ -28,6 +28,13 @@ var config = {
 
 
 
+
+
+
+app.use('/wechat',wechat(config, function (req, res, next) {
+
+
+
 var List = require('wechat').List;
 List.add('view', [
   ['回复{a}查看我的性别', function (info, req, res) {
@@ -41,7 +48,7 @@ List.add('view', [
 
 
 
-app.use('/wechat',wechat(config, function (req, res, next) {
+
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
       res.wait('view');
