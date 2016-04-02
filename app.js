@@ -5,6 +5,16 @@ var express = require('express');
 var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
+
+
+/////////
+app.use(connect.query());
+app.use(connect.cookieParser());
+app.use(connect.session({secret: 'keyboard cat', cookie: {maxAge: 60000}}));
+//////////
+
+
+
 var client = elasticsearch.Client({
   host: '123.57.49.48:9200',
   log: 'trace'
@@ -16,28 +26,12 @@ var config = {
 };
 
 
+
+
 var List = require('wechat').List;
 List.add('view', [
   ['回复{a}查看我的性别', function (info, req, res) {
-    
-    client.search({
-  index: 'schools',
-  type:'muc',
-  size: 1,
-  body: {
-    'min_score':6,
-    "query" :{
-      "match" :{"content": "赵娇" }
-  }
-  }
-}).then(function (resp) {
-  var hits = resp.body.hits;
-  rr.nowait('hehe');
-  console.log(hits)
-  
-});
-
-
+    res.reply('我是个妹纸哟');
   }],
   ['回复{b}查看我的年龄', function (info, req, res) {
     res.reply('我今年18岁');
