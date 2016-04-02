@@ -7,7 +7,7 @@ var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var client = elasticsearch.Client({
   host: '123.57.49.48:9200',
-  log: trace
+  log: 'trace'
 });
 var config = {
   token: 'qihuiqiang',
