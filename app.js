@@ -7,7 +7,7 @@ var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var client = elasticsearch.Client({
   hosts: [
-    'welife001.com:9200'
+    'http://welife001.com:9200'
   ]
 });
 var config = {
