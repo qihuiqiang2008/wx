@@ -6,7 +6,7 @@ var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var client = elasticsearch.Client({
-  host: 'welife001:9200',
+  host: 'welife001.com:9200',
   sniffOnStart: true,
   sniffInterval: 300000
 });
