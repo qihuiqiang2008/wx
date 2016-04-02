@@ -13,7 +13,13 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
   console.log(message)
-  if (message.FromUserName === 'diaosi') {
+
+res.reply({
+      content: 'text object   \n   换行符就是另起一行 \n',
+      type: 'text'
+    });
+
+  /*if (message.FromUserName === 'diaosi') {
     // 回复屌丝(普通回复)
     res.reply('hehe');
   } else if (message.FromUserName === 'text') {
@@ -44,7 +50,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
         url: 'http://nodeapi.cloudfoundry.com/'
       }
     ]);
-  }
+  }*/
 }));
 
 var server = app.listen(80, function () {
