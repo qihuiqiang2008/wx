@@ -31,6 +31,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   }
 }).then(function (resp) {
   var hits = resp.body.hits;
+  console.log(hits)
   res.reply({
       content:hits[0]._source.content,
       type: 'text'
