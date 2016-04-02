@@ -16,8 +16,11 @@ var config = {
 };
 
 
-var es=function(){
-  client.search({
+var List = require('wechat').List;
+List.add('view', [
+  ['回复{a}查看我的性别', function (info, req, res) {
+    
+    client.search({
   index: 'schools',
   type:'muc',
   size: 1,
@@ -29,20 +32,27 @@ var es=function(){
   }
 }).then(function (resp) {
   var hits = resp.body.hits;
+  rr.nowait('hehe');
   console.log(hits)
-  res.reply({
-      content: '那个对美院刘畅有意思的妹子，这是他的联系方式，不用谢我，叫我雷锋阿姨。刘畅：132-6176-5153"\n\n回复上上期表白5，我是她朋友，她有一个特别特别喜欢的人了，她希望你可以找到更好的女孩:\n\n致偷暖瓶的：放于四食堂东门前的绿色暖瓶和紫色暖瓶被偷，已调取监控视频，限两日内放回原位，否则被抓的时候再见吧～:))',
-      type: 'text'
-    });
+  
 });
-}
+
+
+  }],
+  ['回复{b}查看我的年龄', function (info, req, res) {
+    res.reply('我今年18岁');
+  }],
+  ['回复{c}查看我的性取向', '这样的事情怎么好意思告诉你啦- -']
+]);
 
 
 
 app.use('/wechat',wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
-  var rr=res;
+      res.wait('view');
+
+  /*var rr=res;
   console.log(message)
   client.search({
   index: 'schools',
@@ -59,7 +69,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   rr.nowait('hehe');
   console.log(hits)
   
-});
+});*/
 
 /*  res.reply('hehe');
 */
