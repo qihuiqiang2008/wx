@@ -69,7 +69,7 @@ List.add('view', [
   var message = req.weixin;
       res.wait('view');*/
 
-  var rr=res;
+  /*var rr=res;
   console.log(message)
   client.search({
   index: 'schools',
@@ -86,7 +86,7 @@ List.add('view', [
   rr.reply('hehe');
   console.log(hits)
   
-});
+});*/
 
 /*  res.reply('hehe');
 */
