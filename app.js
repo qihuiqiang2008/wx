@@ -6,7 +6,7 @@ var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var connect=require('connect');
-
+var async=require("async");
 /////////
 app.use(connect.query());
 app.use(connect.cookieParser());
@@ -33,9 +33,25 @@ var config = {
 
 app.use('/wechat',wechat(config, function (req, res, next) {
 
+async.waterfall([
+  function(callback){
+    callback(null, 'one', 'two');
+  },
+  function(arg1, arg2, callback){
+    // arg1 now equals 'one' and arg2 now equals 'two'
+    callback(null, 'three');
+  },
+  function(arg1, callback){
+    // arg1 now equals 'three'
+    callback(null, 'done');
+  }
+], function (err, result) {
+   // result now equals 'done'
+ res.reply('我今年18岁');
+});
 
 
-var List = require('wechat').List;
+/*var List = require('wechat').List;
 List.add('view', [
   ['回复{a}查看我的性别', function (info, req, res) {
     res.reply('我是个妹纸哟');
@@ -44,16 +60,16 @@ List.add('view', [
     res.reply('我今年18岁');
   }],
   ['回复{c}查看我的性取向', '这样的事情怎么好意思告诉你啦- -']
-]);
+]);*/
 
 
 
 
-  // 微信输入信息都在req.weixin上
+/*  // 微信输入信息都在req.weixin上
   var message = req.weixin;
-      res.wait('view');
+      res.wait('view');*/
 
-  /*var rr=res;
+  var rr=res;
   console.log(message)
   client.search({
   index: 'schools',
@@ -67,10 +83,10 @@ List.add('view', [
   }
 }).then(function (resp) {
   var hits = resp.body.hits;
-  rr.nowait('hehe');
+  rr.reply('hehe');
   console.log(hits)
   
-});*/
+});
 
 /*  res.reply('hehe');
 */
