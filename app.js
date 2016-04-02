@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
-
+var connect=require('connect');
 
 /////////
 app.use(connect.query());
