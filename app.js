@@ -42,8 +42,26 @@ async.waterfall([
     callback(null, 'three');
   },
   function(arg1, callback){
+
+
+client.search({
+  index: 'schools',
+  type:'muc',
+  size: 1,
+  body: {
+    'min_score':6,
+    "query" :{
+      "match" :{"content": "赵娇" }
+  }
+  }
+}).then(function (resp) {
+  var hits = resp.body.hits;
+  console.log(hits)
+  callback(null, 'done');
+  
+});
     // arg1 now equals 'three'
-    callback(null, 'done');
+ 
   }
 ], function (err, result) {
    // result now equals 'done'
