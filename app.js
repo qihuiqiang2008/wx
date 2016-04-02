@@ -57,11 +57,12 @@ client.search({
 }).then(function (resp) {
   var hits = resp.body.hits;
   console.log(hits)
-  callback(null, 'done');
-  
-});
-    // arg1 now equals 'three'
  
+  
+}, function (err) {
+ callback(null, 'done');});
+    // arg1 now equals 'three'
+
   }
 ], function (err, result) {
    // result now equals 'done'
