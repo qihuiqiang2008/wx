@@ -21,7 +21,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   console.log(message)
   client.search({
   index: 'schools',
-  type:'muc'
+  type:'muc',
   size: 1,
   body: {
     'min_score':6,
@@ -32,7 +32,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
 }).then(function (resp) {
   var hits = resp.body.hits;
   es.reply({
-      content:hits[0]._source.content
+      content:hits[0]._source.content,
       type: 'text'
     });
 });
