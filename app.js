@@ -19,7 +19,11 @@ var client = elasticsearch.Client({
   host: '123.57.49.48:9200'
 /*  log: 'trace'
 */});
-var config;
+var config={
+     token: 'qihuiqiang',
+     appid: 'wx8f708305b914a282',
+     encodingAESKey: '1111111111111111111111111111111111111111111'
+   };
 
 
 var appidRequired = function (req, res, next) {
