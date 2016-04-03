@@ -45,7 +45,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
       "match" :{"content": "赵娇" }
     }
   }
-}).then(function (err, response) {
+}).then(function (response) {
   /*var hits = response.body.hits;
   console.log(hits)*/
   console.log(response)
