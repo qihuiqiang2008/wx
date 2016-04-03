@@ -32,9 +32,27 @@ var config = {
 
 
 app.use('/wechat',wechat(config, function (req, res, next) {
+ 
+ console.log(res)
+ client.search({
+  index: 'schools',
+  type:'muc',
+  size: 1,
+  body: {
+    'min_score':6,
+    "query" :{
+      "match" :{"content": "赵娇" }
+    }
+  }
+}).then(function (err, response) {
+  var hits = resp.body.hits;
+  console.log(hits)
+  console.log(res)
+  res.reply('你好');
+}
 
-var re1s=res;
-async.waterfall([
+
+/*async.waterfall([
   function(callback){
     callback(null, 'one', 'two');
   },
@@ -68,7 +86,7 @@ client.search({
   }
 ], function (err, result) {
    // result now equals 'done'
-});
+});*/
 
 
 /*var List = require('wechat').List;
