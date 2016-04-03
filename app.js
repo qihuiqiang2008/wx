@@ -26,15 +26,13 @@ var config = {
 };
 
 
+var appidRequired = function (req, res, next) {
+  console.log("....");
+  next();
+};
 
 
-
-
-
-app.use('/wechat',wechat(config, function (req, res, next) {
- 
-/* console.log("-------------")
- console.log(res)*/
+app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
  client.search({
   index: 'schools',
   type:'muc',
@@ -48,13 +46,9 @@ app.use('/wechat',wechat(config, function (req, res, next) {
 }).then(function (response) {
     var hits = response.hits.hits;
     console.log(hits[0]._source.content)
-/*  console.log(response)
-*//*  console.log("+++++++++++++++++++++++")
-  console.log(res)*/
-  res.reply(hits[0]._source.content);
-  
+    res.reply(hits[0]._source.content);
 }).catch(function(err){
-  console.log(err)
+   console.log(err)
 });
 
 
