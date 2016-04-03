@@ -50,8 +50,21 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
   }
 }).then(function (response) {
     var hits = response.hits.hits;
-    console.log(hits[0]._source.content)
-    res.reply(hits[0]._source.content);
+    if(hist.length>0){
+     console.log(hits[0]._source.content)
+     res.reply([
+      {
+        title: hits[0]._source.content,
+        description:hits[0]._source.content,
+        picurl: 'https://mmbiz.qlogo.cn/mmbiz/icFGyJ0J3K6E21Fr1cc3AXMltD4M9qv6ubupBYA6WtZEYKF647kibazDmlALFs0PdlqE3ehPbQC2TteXfAe0tibSQ/0?wx_fmt=jpeg',
+        url: 'http://welife001.com/'
+      }
+     ]);
+
+    }else{
+      res.reply("没有和你相关的表白呀，努力努力！！！")
+    }
+    
 }).catch(function(err){
    console.log(err)
 });
