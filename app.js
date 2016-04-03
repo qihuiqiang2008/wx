@@ -78,7 +78,7 @@ config.school=school;
         title: hits[0]._source.content,
         description:hits[0]._source.content,
         picurl: 'https://mmbiz.qlogo.cn/mmbiz/icFGyJ0J3K6E21Fr1cc3AXMltD4M9qv6ubupBYA6WtZEYKF647kibazDmlALFs0PdlqE3ehPbQC2TteXfAe0tibSQ/0?wx_fmt=jpeg',
-        url: 'http://welife001.com:1234/search?s="+school+"&name="+name+"'
+        url: 'http://welife001.com:1234/search?s='+school+'&name='+name+''
       }
      ]);
     }else{
