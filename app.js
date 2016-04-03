@@ -45,7 +45,7 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
   body: {
     'min_score':6,
     "query" :{
-      "match" :{"content": "赵娇" }
+      "match" :{"content": req.weixin.content}
     }
   }
 }).then(function (response) {
