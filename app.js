@@ -30,6 +30,12 @@ var appidmap = {};
 appidmap.bgu ="wx8f708305b914a282";
 appidmap.bj="wxaf8f8567014f584f"
 
+
+var schoolnameMap={};
+schoolnameMap.北京航空航天大学="buaa";
+schoolnameMap.清华大学="qinghua";
+schoolnameMap.北京大学="pku";
+
 var appidRequired = function (req, res, next) {
   config.appid=appidmap[req.query.s]
   config.school=req.query.s
@@ -38,7 +44,16 @@ var appidRequired = function (req, res, next) {
 
 app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
 
-  console.log(req.weixin)
+ console.log(req.weixin)
+ if(!(req.weixin.Content.split(" ").length>1)){
+    res.reply("输入格式错误，请回复学校+名字的形式，例如:清华大学 王晓春")
+    return;
+ }
+ if(!(schoolnameMap[req.weixin.Content.split(" ")[0])){
+   res.reply("没有找到相关表白，请努力呀")；
+   return；
+ }
+
  client.search({
   index: 'schools',
   type:config.school,
@@ -61,7 +76,6 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
         url: 'http://welife001.com/'
       }
      ]);
-
     }else{
       res.reply("没有和你相关的表白呀，努力努力！！！")
     }
