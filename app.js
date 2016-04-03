@@ -47,7 +47,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
 }).then(function (err, response) {
   var hits = resp.body.hits;
   console.log(hits)
-  console.log("这是处理后的"---------+res)
+  console.log("这是处理后的---------"+res)
   res.reply('你好');
 })
 
