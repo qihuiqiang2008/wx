@@ -24,6 +24,7 @@ var config;
 
 var appidRequired = function (req, res, next) {
   console.log("....");
+  console.log(req.query.s)
   if(req.query.s=="bgu"){
     config={
      token: 'qihuiqiang',
