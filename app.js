@@ -33,7 +33,7 @@ var config = {
 
 app.use('/wechat',wechat(config, function (req, res, next) {
  
- console.log(res)
+ console.log("----------------------这是刚进来的---------"+res)
  client.search({
   index: 'schools',
   type:'muc',
@@ -47,7 +47,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
 }).then(function (err, response) {
   var hits = resp.body.hits;
   console.log(hits)
-  console.log(res)
+  console.log("这是处理后的"---------+res)
   res.reply('你好');
 })
 
