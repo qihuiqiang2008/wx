@@ -6,6 +6,8 @@ var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var connect=require('connect');
+var crypto = require('crypto');
+
 /////////
 app.use(connect.query());
 app.use(connect.cookieParser());
@@ -18,8 +20,17 @@ var client = elasticsearch.Client({
   host: '123.57.49.48:9200'
 /*  log: 'trace'
 */});
+
+md5=function (str) {
+var md5sum = crypto.createHash(‘md5’);
+md5sum.update(str);
+str = md5sum.digest(‘hex’);
+return str;
+};
+
 var config={
      school: "bgu",
+     region: "bj",
      token: 'qihuiqiang',
      appid: 'wx8f708305b914a282123213',
      encodingAESKey: '1111111111111111111111111111111111111111111'
@@ -38,6 +49,7 @@ schoolnameMap.北京大学="pku";
 var appidRequired = function (req, res, next) {
   config.appid=appidmap[req.query.s]
   config.school=req.query.s
+  config.region=req.query.r
   next();
 };
 var school="";
@@ -70,7 +82,7 @@ config.school=school;
     }
   }
 }).then(function (response) {
-  console.log('http://welife001.com:1234/search?s='+school+'&name='+name+''
+  console.log('http://welife001.com:1234/search?r='+region+'&s='+school+'&name='+name+''
 )
     var hits = response.hits.hits;
     if(hits.length>0){
