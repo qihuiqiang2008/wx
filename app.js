@@ -45,7 +45,7 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
   body: {
     'min_score':6,
     "query" :{
-      "match" :{"content": req.weixin.content}
+      "match" :{"content": req.weixin.Content}
     }
   }
 }).then(function (response) {
