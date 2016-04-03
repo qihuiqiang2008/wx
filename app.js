@@ -20,25 +20,25 @@ var client = elasticsearch.Client({
 /*  log: 'trace'
 */});
 var config={
+     school="bgu",
      token: 'qihuiqiang',
      appid: 'wx8f708305b914a282123213',
      encodingAESKey: '1111111111111111111111111111111111111111111'
    };
-
 
 var appidmap = {};
 appidmap.bgu ="wx8f708305b914a282";
 
 var appidRequired = function (req, res, next) {
   config.appid=appidmap[req.query.s]
+  config.school=req.query.s
   next();
 };
-
 
 app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
  client.search({
   index: 'schools',
-  type:'muc',
+  type:config.school,
   size: 1,
   body: {
     'min_score':6,
