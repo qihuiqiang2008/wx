@@ -46,7 +46,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
     }
   }
 }).then(function (response) {
-    var hits = resp.hits.hits;
+    var hits = response.hits.hits;
     console.log(hits)
 /*  console.log(response)
 *//*  console.log("+++++++++++++++++++++++")
