@@ -48,7 +48,9 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
     res.reply("输入格式错误，请回复学校+名字的形式，例如:清华大学 王晓春");
     return;
  }
- console.log(req.weixin.Content.split(" ")[0])
+ console.log(schoolnameMap[req.weixin.Content.split(" ")[0]]);
+  console.log(!(schoolnameMap[req.weixin.Content.split(" ")[0]]));
+
  if(!(schoolnameMap[req.weixin.Content.split(" ")[0]])){
     res.reply("没有找到相关表白.....");
    return;
