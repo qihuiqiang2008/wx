@@ -56,6 +56,7 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
    return;
  }
 
+config.school=schoolnameMap[req.weixin.Content.split(" ")[0]];
  client.search({
   index: 'schools',
   type:config.school,
