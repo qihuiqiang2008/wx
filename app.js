@@ -20,7 +20,7 @@ var client = elasticsearch.Client({
 /*  log: 'trace'
 */});
 var config={
-     school="bgu",
+     school: "bgu",
      token: 'qihuiqiang',
      appid: 'wx8f708305b914a282123213',
      encodingAESKey: '1111111111111111111111111111111111111111111'
