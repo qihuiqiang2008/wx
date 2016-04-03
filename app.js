@@ -47,11 +47,11 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   }
 }).then(function (response) {
     var hits = response.hits.hits;
-    console.log(hits[0]._source.content)
+    console.log(hits[0])
 /*  console.log(response)
 *//*  console.log("+++++++++++++++++++++++")
   console.log(res)*/
-  res.reply(hits[0]._source.content);
+  res.reply("........");
   
 }).catch(function(err){
   console.log(err)
