@@ -28,6 +28,7 @@ var config={
 
 var appidmap = {};
 appidmap.bgu ="wx8f708305b914a282";
+appidmap.bj="wxaf8f8567014f584f"
 
 var appidRequired = function (req, res, next) {
   config.appid=appidmap[req.query.s]
