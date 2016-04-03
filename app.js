@@ -6,7 +6,6 @@ var app = express();
 var wechat = require('wechat');
 var elasticsearch = require('elasticsearch');
 var connect=require('connect');
-var async=require("async");
 /////////
 app.use(connect.query());
 app.use(connect.cookieParser());
@@ -50,7 +49,7 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
     return;
  }
  if(!(schoolnameMap[req.weixin.Content.split(" ")[0]])){
-   res.reply("没有找到相关表白，请努力呀")；
+   res.reply("没有找到相关表白请努力呀")；
    return；
  }
 
