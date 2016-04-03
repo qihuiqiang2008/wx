@@ -16,9 +16,9 @@ app.use(connect.session({secret: 'keyboard cat', cookie: {maxAge: 60000}}));
 
 
 var client = elasticsearch.Client({
-  host: '123.57.49.48:9200',
-  log: 'trace'
-});
+  host: '123.57.49.48:9200'
+/*  log: 'trace'
+*/});
 var config = {
   token: 'qihuiqiang',
   appid: 'wx8f708305b914a282',
@@ -46,10 +46,11 @@ app.use('/wechat',wechat(config, function (req, res, next) {
     }
   }
 }).then(function (response) {
-  /*var hits = response.body.hits;
-  console.log(hits)*/
-  console.log(response)
-/*  console.log("+++++++++++++++++++++++")
+  var hits = response.body.hits;
+    var hits = resp.hits.hits;
+    console.log(hits)
+/*  console.log(response)
+*//*  console.log("+++++++++++++++++++++++")
   console.log(res)*/
   res.reply('你好');
   
