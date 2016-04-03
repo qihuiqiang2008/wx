@@ -50,7 +50,10 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   console.log(hits)
   console.log("+++++++++++++++++++++++")
   console.log(res)
-  res.reply('你好');
+  try{ 
+   res.reply('你好');
+  } catch(e) 
+  {console.log('new error..');}
 })
 
 
