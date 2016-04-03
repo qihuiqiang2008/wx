@@ -70,6 +70,8 @@ config.school=school;
     }
   }
 }).then(function (response) {
+  console.log('http://welife001.com:1234/search?s='+school+'&name='+name+''
+)
     var hits = response.hits.hits;
     if(hits.length>0){
      console.log(hits[0]._source.content)
