@@ -22,9 +22,9 @@ var client = elasticsearch.Client({
 */});
 
 md5=function (str) {
-var md5sum = crypto.createHash(‘md5’);
+var md5sum = crypto.createHash('md5');
 md5sum.update(str);
-str = md5sum.digest(‘hex’);
+str = md5sum.digest('hex');
 return str;
 };
 
@@ -82,7 +82,7 @@ config.school=school;
     }
   }
 }).then(function (response) {
-  console.log('http://welife001.com:1234/search?r='+region+'&s='+school+'&name='+name+''
+  console.log('http://welife001.com:1234/search?key='+md5(name)+'&r='+region+'&s='+school+'&name='+name+''
 )
     var hits = response.hits.hits;
     if(hits.length>0){
