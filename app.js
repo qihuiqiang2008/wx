@@ -82,7 +82,7 @@ config.school=school;
     }
   }
 }).then(function (response) {
-  console.log('http://welife001.com:1234/search?key='+md5(name)+'&r='+region+'&s='+school+'&name='+name+''
+  console.log('http://welife001.com:1234/search?key='+md5(name)+'&r='+config.region+'&s='+school+'&name='+name+''
 )
     var hits = response.hits.hits;
     if(hits.length>0){
