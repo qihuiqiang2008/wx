@@ -36,6 +36,8 @@ var appidRequired = function (req, res, next) {
 };
 
 app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
+
+  console.log(req.weixin)
  client.search({
   index: 'schools',
   type:config.school,
