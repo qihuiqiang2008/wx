@@ -32,6 +32,7 @@ var appidRequired = function (req, res, next) {
      encodingAESKey: '1111111111111111111111111111111111111111111'
    };
   }
+  console.log(config)
   next();
 };
 
