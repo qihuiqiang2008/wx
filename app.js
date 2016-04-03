@@ -21,7 +21,7 @@ var client = elasticsearch.Client({
 */});
 var config={
      token: 'qihuiqiang',
-     appid: 'wx8f708305b914a282',
+     appid: 'wx8f708305b914a282123213',
      encodingAESKey: '1111111111111111111111111111111111111111111'
    };
 
