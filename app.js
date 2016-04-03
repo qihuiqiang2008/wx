@@ -49,7 +49,7 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   console.log(hits)
   console.log(res)
   res.reply('你好');
-}
+})
 
 
 /*async.waterfall([
