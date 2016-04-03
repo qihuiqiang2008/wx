@@ -33,8 +33,8 @@ var config = {
 
 app.use('/wechat',wechat(config, function (req, res, next) {
  
- console.log("-------------")
- console.log(res)
+/* console.log("-------------")
+ console.log(res)*/
  client.search({
   index: 'schools',
   type:'muc',
@@ -49,8 +49,8 @@ app.use('/wechat',wechat(config, function (req, res, next) {
   /*var hits = response.body.hits;
   console.log(hits)*/
   console.log(response)
-  console.log("+++++++++++++++++++++++")
-  console.log(res)
+/*  console.log("+++++++++++++++++++++++")
+  console.log(res)*/
   res.reply('你好');
   
 }).catch(function(err){
