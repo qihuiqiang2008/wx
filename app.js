@@ -26,17 +26,11 @@ var config={
    };
 
 
+var appidmap = {};
+appidmap.bgu ="wx8f708305b914a282";
+
 var appidRequired = function (req, res, next) {
-  console.log("....");
-  console.log(req.query.s)
-  if(req.query.s=="bgu"){
-    config={
-     token: 'qihuiqiang',
-     appid: 'wx8f708305b914a282',
-     encodingAESKey: '1111111111111111111111111111111111111111111'
-   };
-  }
-  console.log(config)
+  config.appid=appidmap[req.query.s]
   next();
 };
 
