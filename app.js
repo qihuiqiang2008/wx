@@ -50,9 +50,9 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
   }
 }).then(function (response) {
     var hits = response.hits.hits;
-    if(hist.length>0){
+    if(hits.length>0){
      console.log(hits[0]._source.content)
-     res.reply([
+     res.reply([   
       {
         title: hits[0]._source.content,
         description:hits[0]._source.content,
