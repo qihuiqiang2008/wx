@@ -225,6 +225,7 @@ var appidRequired = function (req, res, next) {
 };
 var school="";
 var name="";
+var region="";
 
 app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
 
@@ -235,7 +236,7 @@ app.use('/wechat',appidRequired,wechat(config, function (req, res, next) {
  }
  school=schoolnameMap[req.weixin.Content.split(" ")[0]]
  name=req.weixin.Content.split(" ")[1]
-
+ region=regionnameMap[req.weixin.Content.split(" ")[0]]
  if(!school){
     res.reply("没有找到相关表白.....");
    return;
@@ -253,7 +254,7 @@ config.school=school;
     }
   }
 }).then(function (response) {
-  console.log('http://welife001.com:1234/search?key='+md5(name)+'&r='+config.region+'&s='+school+'&name='+name+''
+  console.log('http://welife001.com:1234/search?key='+md5(name)+'&r='+region+'&s='+school+'&name='+name+''
 )
     var hits = response.hits.hits;
     if(hits.length>0){
@@ -263,7 +264,7 @@ config.school=school;
         title: hits[0]._source.content,
         description:hits[0]._source.content,
         picurl: 'https://mmbiz.qlogo.cn/mmbiz/icFGyJ0J3K6E21Fr1cc3AXMltD4M9qv6ubupBYA6WtZEYKF647kibazDmlALFs0PdlqE3ehPbQC2TteXfAe0tibSQ/0?wx_fmt=jpeg',
-        url: 'http://welife001.com:1234/search?key='+md5(name)+'&r='+config.region+'&s='+school+'&name='+name+''
+        url: 'http://welife001.com:1234/search?key='+md5(name)+'&r='+region+'&s='+school+'&name='+name+''
       }
      ]);
     }else{
