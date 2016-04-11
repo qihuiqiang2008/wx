@@ -39,6 +39,11 @@ var config={
 var appidmap = {};
 appidmap.bgu ="wx8f708305b914a282";
 appidmap.bj="wxaf8f8567014f584f"
+appidmap.sh="wxbea555cffdc3fe10"
+appidmap.xa="wxacdc3fad43de061b"
+
+
+
 
 
 var schoolnameMap={};
